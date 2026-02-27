@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class node{
+public:
+    int data;
+    node *next;
+    node(int a = 0){
+        this -> data = a;
+        this -> next = nullptr;
+    }
+};
+
+class linkedList{
+    node *head;
+public:
+    linkedList(){
+        this -> head = nullptr;
+    }
+
+    void insertDescendingOrder(int value){
+        node *newNode = new node(value);
+
+        if(head == nullptr || value > head -> data){
+            newNode -> next = head;
+            head = newNode;
+            return;
+        }
+
+        node *current = head;
+        while(current -> next != nullptr && current -> next -> data > value){
+            current = current -> next;
+        }
+        newNode -> next = current -> next;
+        current -> next = newNode;
+    }
+
+    void print(){
+        node *current = head;
+        while(current != nullptr){
+            cout << current -> data << " -> ";
+            current = current -> next;
+        }
+        cout << "x";
+    }
+};
+
+int main(){
+    linkedList list;
+    list.insertDescendingOrder(10);
+    list.insertDescendingOrder(20);
+    list.insertDescendingOrder(5);
+    list.insertDescendingOrder(45);
+    list.insertDescendingOrder(31);
+    list.insertDescendingOrder(37);
+
+    list.print();
+    return 0;
+}
