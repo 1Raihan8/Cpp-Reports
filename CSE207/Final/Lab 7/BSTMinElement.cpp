@@ -49,11 +49,12 @@ public:
             return nullptr;
         }
 
-        if(Root -> left == nullptr){
-            return Root;
-        }
+        node *current = Root;
+        while(current -> left != nullptr){
+            current = current -> left;
+        } 
 
-        return MinElement(Root -> left);
+        return current;
     }
 
     node* MinElement(){

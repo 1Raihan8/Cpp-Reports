@@ -49,11 +49,12 @@ public:
             return nullptr;
         }
 
-        if(Root -> right == nullptr){
-            return Root;
-        }
+        node *current = Root;
+        while(current -> right != nullptr){
+            current = current -> right;
+        } 
 
-        return MaxElement(Root -> right);
+        return current;
     }
 
     node* MaxElement(){
